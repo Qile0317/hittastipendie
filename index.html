@@ -26,25 +26,40 @@
             font-family: 'Times New Roman', Times, serif;
             font-size: 36px;
             text-align: center;
-            margin-bottom: 0px;
+            margin-bottom: 5px;
+            margin-top: 0;
             color: #000080;
             font-weight: normal;
+            display: inline-block;
+        }
+        
+        .title-row {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .update-info {
+            display: inline-block;
+            font-size: 14px;
+            color: #666;
+            margin-left: 15px;
         }
         
         .subtitle {
             font-style: italic;
             text-align: center;
-            margin-top: 0px;
+            margin: 0 auto;
             margin-bottom: 5px;
             font-size: 16px;
             color: #555;
+            display: block;
         }
         
         .top-info {
             text-align: center;
             font-size: 14px;
             color: #666;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         
         h2 {
@@ -59,14 +74,15 @@
         }
         
         .intro {
-            margin-bottom: 40px;
-            padding: 30px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
             background-color: #f8f8f8;
             border-left: 4px solid #333;
         }
         
         .intro p {
-            margin: 10px 0;
+            margin: 5px 0;
+            font-size: 14px;
         }
         
         .intro em {
@@ -78,7 +94,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         
         .author-image {
@@ -170,11 +186,11 @@
 <body>
     <div class="container">
         <div class="intro">
-            <h1>HittaStipendier.se</h1>
-            <span class="subtitle">stipendierna som faktiskt är aktiva (kandidat utomlands)</span>
-            <div class="top-info">
-                Unika besökare: <span id="visitor-count"><script type="text/javascript" src="https://counter.websiteout.com/js/2/5/0/1"></script></span> | Senast uppdaterad: <span id="update-date" style="font-size: 18px; font-weight: bold;">juli 2025</span>
+            <div class="title-row">
+                <h1>HittaStipendier.se</h1>
+                <span class="update-info">Senast uppdaterad: <strong>juli 2025</strong></span>
             </div>
+            <span class="subtitle">stipendierna som faktiskt är aktiva (kandidat utomlands)</span>
             <p><em>Vi har lagt ner hundratals timmar vardera för att hitta aktiva stipendier.</em></p>
             <p><em>För att hjälpa andra har vi kastat ihop <span class="highlight">denna lista som innehåller länkar och ansökningsdatum till de stiftelser som vi själva fått stipendier från / som är aktiva.</span></em></p>
             <p><strong>Frågor eller tips: <a href="mailto:karlcal@berkeley.edu">karlcal@berkeley.edu</a> eller <a href="mailto:aheiman@stanford.edu">aheiman@stanford.edu</a>. <em>Vi hoppas att detta gör sökandet betydligt snabbare!</em></strong></p>
@@ -247,6 +263,7 @@
         
         <div class="footer">
             <p>Denna 90-talistiska sida är ihopkastad av Karl Vilhelmsson Emneby och Alice Heiman i syfte att hjälpa svenska utlandsstudenter att lättare söka stipendier</p>
+            <p>Unika besökare: <script type="text/javascript" src="https://counter.websiteout.com/js/2/5/0/1"></script> | Besök: <script type="text/javascript" src="https://counter.websiteout.com/js/2/5/0/0"></script></p>
         </div>
     </div>
 
@@ -342,7 +359,10 @@
                     
                     // Update date
                     if (info.UpdateDate) {
-                        document.getElementById('update-date').textContent = info.UpdateDate;
+                        const updateSpan = document.querySelector('.update-info strong');
+                        if (updateSpan) {
+                            updateSpan.textContent = info.UpdateDate;
+                        }
                     }
                 }
             } catch (error) {
