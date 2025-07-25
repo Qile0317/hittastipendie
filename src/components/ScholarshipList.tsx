@@ -1,4 +1,5 @@
 import { Scholarship } from '../types/content';
+import { parseTextWithLinks } from '../lib/linkParser';
 
 interface ScholarshipListProps {
   scholarships: Scholarship[];
@@ -26,7 +27,7 @@ export default function ScholarshipList({ scholarships }: ScholarshipListProps) 
           <span className="text-green-700 font-bold">{scholarship.amount}</span>
           {scholarship.details && (
             <div className="text-sm text-neutral-600 mt-1">
-              {scholarship.details}
+              {parseTextWithLinks(scholarship.details)}
             </div>
           )}
         </div>

@@ -1,4 +1,5 @@
 import { ScheduleItem } from '../types/content';
+import { parseTextWithLinks } from '../lib/linkParser';
 
 interface ScheduleTableProps {
   schedule: ScheduleItem[];
@@ -50,7 +51,7 @@ export default function ScheduleTable({
                 )}
               </td>
               <td className="border border-neutral-300 p-3">
-                {item.details}
+                {parseTextWithLinks(item.details)}
               </td>
             </tr>
           ))}
