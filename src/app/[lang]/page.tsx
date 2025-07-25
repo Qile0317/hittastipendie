@@ -4,7 +4,7 @@ import { Locale } from '../../lib/i18n';
 import ScholarshipList from '../../components/ScholarshipList';
 import ScheduleTable from '../../components/ScheduleTable';
 import UsefulLinks from '../../components/UsefulLinks';
-import LanguageSwitcher from '../../components/LanguageSwitcher';
+import FloatingLanguageSwitcher from '../../components/FloatingLanguageSwitcher';
 
 export default async function Home({
   params,
@@ -31,9 +31,6 @@ export default async function Home({
             </div>
             <div className="text-base italic text-blue-900 block -mt-1 mb-4">
               {dict.site.subtitle}
-            </div>
-            <div className="flex justify-center">
-              <LanguageSwitcher currentLang={lang} />
             </div>
           </div>
           
@@ -126,6 +123,9 @@ export default async function Home({
           </p>
         </footer>
       </div>
+      
+      {/* Floating Language Switcher */}
+      <FloatingLanguageSwitcher currentLang={lang} />
     </div>
   );
 }
