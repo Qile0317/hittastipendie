@@ -23,14 +23,12 @@ export default async function Home({
         {/* Header */}
         <div className="mb-6 p-4 bg-neutral-50 border-l-4 border-neutral-900">
           <div className="text-center mb-0">
-            <div className="flex justify-center items-center gap-4 mb-1">
-              <h1 className="text-4xl text-blue-900 font-normal font-serif inline-block">
-                HittaStipendier.se
-              </h1>
-              <span className="text-sm text-neutral-600">
-                {t('site.lastUpdated')}: <strong>{lastUpdatedDate}</strong>
-              </span>
-            </div>
+            <h1 className="text-4xl text-blue-900 font-normal font-serif">
+              HittaStipendier.se
+            </h1>
+            <span className="text-sm text-neutral-600 block">
+              {t('site.lastUpdated')}: <strong>{lastUpdatedDate}</strong>
+            </span>
             <div className="text-base italic text-blue-900 block -mt-1 mb-4">
               {t('site.subtitle')}
             </div>
