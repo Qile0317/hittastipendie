@@ -136,7 +136,7 @@ aliceSchedule:
     url: "https://whitlocks.se/"
     details: ""
   - month: "September"
-    foundation: "AAAA Foundation"
+    foundation: "AAA Foundation"
     url: null
     details: "You must email the foundation to get the form: stiftelsen.aaa@gmail.com"
   - month: "October"
