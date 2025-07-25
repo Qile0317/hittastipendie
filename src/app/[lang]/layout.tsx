@@ -14,27 +14,16 @@ export const metadata: Metadata = {
 
 export default async function LocaleLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
 }) {
-  const { lang } = await params;
-  
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
   
   return (
-    <html lang={lang}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      {children}
+    </NextIntlClientProvider>
   );
 }
