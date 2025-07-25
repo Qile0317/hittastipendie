@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Locale } from '../lib/i18n';
+import { Locale } from '../i18n/request';
 
 interface FloatingLanguageSwitcherProps {
   currentLang: Locale;

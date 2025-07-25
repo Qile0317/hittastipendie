@@ -1,6 +1,6 @@
-import { getDictionary } from '../../lib/dictionaries';
+import { getTranslations } from 'next-intl/server';
 import { getContentData } from '../../lib/content';
-import { Locale } from '../../lib/i18n';
+import { Locale } from '../../i18n/request';
 import ScholarshipList from '../../components/ScholarshipList';
 import ScheduleTable from '../../components/ScheduleTable';
 import UsefulLinks from '../../components/UsefulLinks';
@@ -12,7 +12,7 @@ export default async function Home({
   params: Promise<{ lang: Locale }>;
 }) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const t = await getTranslations({ locale: lang });
   const contentData = getContentData(lang);
 
   return (
@@ -26,29 +26,29 @@ export default async function Home({
                 HittaStipendier.se
               </h1>
               <span className="text-sm text-neutral-600">
-                {dict.site.lastUpdated}: <strong>juli 2025</strong>
+                {t('site.lastUpdated')}: <strong>juli 2025</strong>
               </span>
             </div>
             <div className="text-base italic text-blue-900 block -mt-1 mb-4">
-              {dict.site.subtitle}
+              {t('site.subtitle')}
             </div>
           </div>
           
           <div className="space-y-1 text-sm">
             <p>
-              <em>{dict.intro.description1}</em>
+              <em>{t('intro.description1')}</em>
             </p>
             <p>
               <em>
-                {dict.intro.description2}{' '}
+                {t('intro.description2')}{' '}
                 <span className="bg-yellow-300 px-1 py-0.5 font-bold">
-                  {dict.intro.description3}
+                  {t('intro.description3')}
                 </span>
               </em>
             </p>
             <p>
               <strong>
-                {dict.intro.contact}{' '}
+                {t('intro.contact')}{' '}
                 <a href="mailto:karlcal@berkeley.edu" className="text-blue-600 underline">
                   karlcal@berkeley.edu
                 </a>{' '}
@@ -60,7 +60,7 @@ export default async function Home({
               </strong>
             </p>
             <p>
-              <strong>{dict.intro.authors}</strong>
+              <strong>{t('intro.authors')}</strong>
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default async function Home({
         {/* Karl's Scholarships */}
         <section className="mb-10">
           <h2 className="text-lg font-bold uppercase tracking-wide mb-5 pb-2 border-b-2 border-neutral-900 font-sans">
-            {dict.sections.karlScholarships}
+            {t('sections.karlScholarships')}
           </h2>
           <ScholarshipList scholarships={contentData.karlScholarships} />
         </section>
@@ -76,45 +76,45 @@ export default async function Home({
         {/* Karl's Schedule */}
         <section className="mb-10">
           <h2 className="text-lg font-bold uppercase tracking-wide mb-5 pb-2 border-b-2 border-neutral-900 font-sans">
-            {dict.sections.karlSchedule}
+            {t('sections.karlSchedule')}
           </h2>
           <p className="italic mb-2 text-sm">
-            {dict.scheduleNote}
+            {t('scheduleNote')}
           </p>
           <ScheduleTable 
             schedule={contentData.karlSchedule}
-            monthLabel={dict.table.month}
-            foundationLabel={dict.table.foundation}
-            detailsLabel={dict.table.details}
+            monthLabel={t('table.month')}
+            foundationLabel={t('table.foundation')}
+            detailsLabel={t('table.details')}
           />
         </section>
 
         {/* Alice's Schedule */}
         <section className="mb-10">
           <h2 className="text-lg font-bold uppercase tracking-wide mb-5 pb-2 border-b-2 border-neutral-900 font-sans">
-            {dict.sections.aliceSchedule}
+            {t('sections.aliceSchedule')}
           </h2>
           <ScheduleTable 
             schedule={contentData.aliceSchedule}
-            monthLabel={dict.table.month}
-            foundationLabel={dict.table.scholarship}
-            detailsLabel={dict.table.details}
+            monthLabel={t('table.month')}
+            foundationLabel={t('table.scholarship')}
+            detailsLabel={t('table.details')}
           />
         </section>
 
         {/* Useful Links */}
         <section className="mb-10">
           <h2 className="text-lg font-bold uppercase tracking-wide mb-5 pb-2 border-b-2 border-neutral-900 font-sans">
-            {dict.sections.usefulLinks}
+            {t('sections.usefulLinks')}
           </h2>
           <UsefulLinks links={contentData.usefulLinks} />
         </section>
 
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-neutral-300 text-center text-sm text-neutral-600">
-          <p>{dict.footer}</p>
+          <p>{t('footer')}</p>
           <p className="mt-2">
-            {dict.visitors}: 
+            {t('visitors')}: 
             <script 
               type="text/javascript" 
               src="https://counter.websiteout.com/js/5/6/0/1"
