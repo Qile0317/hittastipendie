@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { getContentData } from '../../lib/content';
 import { Locale } from '../../i18n/request';
+import { getBuildTimeDate } from '../../lib/buildTime';
 import ScholarshipList from '../../components/ScholarshipList';
 import ScheduleTable from '../../components/ScheduleTable';
 import UsefulLinks from '../../components/UsefulLinks';
@@ -14,6 +15,7 @@ export default async function Home({
   const { lang } = await params;
   const t = await getTranslations({ locale: lang });
   const contentData = getContentData(lang);
+  const lastUpdatedDate = getBuildTimeDate(lang);
 
   return (
     <div className="min-h-screen bg-neutral-100 text-neutral-800 p-5 leading-relaxed">
@@ -26,7 +28,7 @@ export default async function Home({
                 HittaStipendier.se
               </h1>
               <span className="text-sm text-neutral-600">
-                {t('site.lastUpdated')}: <strong>juli 2025</strong>
+                {t('site.lastUpdated')}: <strong>{lastUpdatedDate}</strong>
               </span>
             </div>
             <div className="text-base italic text-blue-900 block -mt-1 mb-4">
